@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - OM Trading</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    body {
+      font-family: Calibri, Arial, sans-serif; /* Change font to Calibri */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #191B20; /* Set background color */
+      background-image: url('background.png');
+      background-size: cover; /* Adjust as needed */
+      background-repeat: no-repeat; /* Prevent repeating */
+    }
+    .navbar {
+      background-color: black;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .navbar-brand img {
+      max-height: 100px; /* Adjust height as needed */
+    }
+    .navbar-nav {
+      margin: 0 auto; /* Centering tabs */
+      display: flex;
+      justify-content: center;
+    }
+    .navbar-nav .nav-link {
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0 10px; /* Space between tabs */
+      font-weight: normal; /* Normal font weight */
+      border-radius: 20px; /* Rounded background */
+      padding: 8px 16px; /* Adjust padding */
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      background-color: #E96A59; /* Change background color */
+      color: white !important; /* Text color white */
+      font-weight: bold; /* Bold font weight */
+    }
+    .photo-header {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      margin-top: -20px; /* Adjust margin to remove white space */
+    }
+    .header-heading {
+      position: absolute;
+      top: 50%;
+      left: 35%; /* Adjusted left position */
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 36px;
+      font-weight: bold; /* Make it bold */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow effect */
+      z-index: 1;
+    }
+    .header-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Product Catalogue Tab */
+    .catalogue-tab {
+      text-align: center;
+      margin-top: 10px; /* Adjust as needed */
+    }
+    
+    .catalogue-tab p {
+      background-color: maroon; /* Set background color */
+      color: white; /* Set text color */
+      display: inline-block;
+      padding: 5px 20px; /* Adjust padding */
+      border-radius: 20px; /* Rounded corners */
+      font-weight: bold; /* Bold text */
+    }
+
+    /* Product Sections */
+    .product-container {
+      display: flex;
+      margin-top: 50px;
+    }
+    .products {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product-section {
+      width: calc(33.33% - 20px); /* Adjusted width with margin */
+      max-width: 250px; /* Set maximum width */
+      height: auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s; /* Smooth transition */
+      cursor: pointer;
+      margin: 20px 10px; /* Adjust margin */
+    }
+    .product-section img {
+      width: 100%;
+      height: auto;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .product-section .product-details {
+      padding: 15px;
+    }
+    .product-section .product-details h3 {
+      color: black; /* Set text color to black */
+      text-decoration-color: white; /* Set underline color to white */
+    }
+      
+    /* Reset anchor styles within product details */
+      .product-details p {
+        color: black; /* Set text color to black */
+        text-decoration: none; /* Set underline color to white */
+      }
+
+    /* Hover effect: Zoom */
+    .product-section:hover {
+      transform: scale(1.05); /* Zoom effect on hover */
+    }
+      
+    /* Site Map Footer */
+    footer {
+      background-image: url("bgsitemap.jpg");
+      padding: 20px 0;
+      background-size: cover; 
+      background-position: 27% 73%; 
+      margin-top: auto; /* Push footer to bottom */
+    }
+    footer h4 {
+      margin-bottom: 20px;
+      font-weight: bold; /* Bold font weight */
+    }
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    .bottom-line {
+      text-align: right;
+      padding: 3px 20px; /* Adjust padding */
+      background-color:black ; /* Background color */
+    }
+    .bottom-line p {
+      color: gainsboro; /* Text color white */
+      margin: 0; /* Remove default margin */
+   }
+      
+
+    /* Additions for popups */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      z-index: 1000;
+    }
+    .popup img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .popup .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background-color: black;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .popup .order-btn {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: maroon;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .popup .close-btn:focus,
+    .popup .order-btn:focus {
+      outline: none;
+    }
+
+    /* Product 1 Popup */
+    #product1-popup:target {
+      display: block;
+    }
+
+    /* Product 2 Popup */
+    #product2-popup:target {
+      display: block;
+    }
+
+    /* Product 3 Popup */
+    #product3-popup:target {
+      display: block;
+    }
+    
+    /* Product 4 Popup */
+    #product4-popup:target {
+      display: block;
+    }
+    
+    /* Product 5 Popup */
+    #product5-popup:target {
+      display: block;
+    } 
+    
+    /* Product 6 Popup */
+    #product6-popup:target {
+      display: block;
+    }
+    
+    /* Product 7 Popup */
+    #product7-popup:target {
+      display: block;
+    }
+    
+    /* Product 8 Popup */
+    #product8-popup:target {
+      display: block;
+    }
+    
+    /* Product 9 Popup */
+    #product9-popup:target {
+      display: block;
+    }
+    
+    /* Product 10 Popup */
+    #product10-popup:target {
+      display: block;
+    }
+      a {
+    color: black;
+    text-decoration: none;
+    }
+    a:hover {
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="OM Trading Logo">
+    </a>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="projecthome.html">Home</a>
+        </li>
+        <!-- About Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectaboutus.html">About Us</a>
+        </li>
+          
+        <!-- Products -->
+<li class="nav-item dropdown active">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Products
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a class="dropdown-item" href="projectorder.html">Order Form</a></li>
+  </ul>
+</li>
+
+
+        <!-- Services -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectservice.html">Services</a>
+        </li>
+        <!-- Testimonials -->
+        <li class="nav-item">
+          <a class="nav-link" href="projecttestimonials.html">Testimonials</a>
+        </li>
+        <!-- Support -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectgallery.html">Gallery</a>
+        </li>
+        <!-- Contact Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectcontactus.html">Contact Us</a>
+        </li>
+        <!-- FAQs -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectfaqs.html">FAQs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Photo Header -->
+<div class="photo-header">
+  <h1 class="header-heading">Secure Your Space:<br>Explore Our CCTV Camera Collection</h1>
+  <img src="productheader.png" alt="Header Image" class="header-image">
+  <!-- Product Catalogue Tab -->
+  <div class="catalogue-tab">
+    <br />
+    <p>Product Catalogue</p>
+  </div>
+</div>
+<br />
+<!-- Product Section -->
+<div class="product-container">
+  <!-- Products -->
+  <div class="products">
+      
+    <!-- Product 1 -->
+    <div class="product-section all">
+      <a href="#product1-popup">
+        <img src="bullet1.png" alt="Product 1">
+        <div class="product-details">
+          <h3><b>₱3,000.00</b></h3>
+          <p>ST-AHD576</p>
+        </div>
+      </a>
+    </div>
+    <!-- Product 2 -->
+    <div class="product-section all">
+        <a href="#product2-popup">
+          <img src="bullet2.png" alt="Product 2">
+          <div class="product-details">
+            <h3><b>₱3,000.00</b></h3>
+            <p>ST-AHD805B</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 3 -->
+    <div class="product-section starlight">
+        <a href="#product3-popup">
+          <img src="star1.png" alt="Product 3">
+          <div class="product-details">
+            <h3><b>₱2,500.00</b></h3>
+            <p>ST-AHD70I3S</p>
+          </div>
+        </a>    
+    </div>
+    <!-- Product 4 -->
+    <div class="product-section starlight">
+        <a href="#product4-popup">
+          <img src="star2.png" alt="Product 4">
+          <div class="product-details">
+            <h3><b>₱2,500.00</b></h3>
+            <p>ST-AHD570S</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 5 -->
+    <div class="product-section fisheye">
+        <a href="#product5-popup">
+          <img src="fish1.png" alt="Product 5">
+          <div class="product-details">
+            <h3><b>₱2,000.00</b></h3>
+            <p>ST-PHD562</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 6 -->
+    <div class="product-section fisheye">
+        <a href="#product6-popup">
+          <img src="fish2.png" alt="Product 6">
+          <div class="product-details">
+            <h3><b>₱2,000.00</b></h3>
+            <p>ST-PHD563</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 7 -->
+    <div class="product-section motorized">
+        <a href="#product7-popup">
+          <img src="motor1.png" alt="Product 7">
+          <div class="product-details">
+            <h3><b>₱3,000.00</b></h3>
+            <p>ST-PHD562</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 8 -->
+    <div class="product-section motorized">
+        <a href="#product8-popup">
+          <img src="motor2.png" alt="Product 8">
+          <div class="product-details">
+            <h3><b>₱3,000.00</b></h3>
+            <p>ST-AHD753D</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 9 -->
+    <div class="product-section ptz">
+        <a href="#product9-popup">
+          <img src="ahd1.png" alt="Product 9">
+          <div class="product-details">
+            <h3><b>₱5,000.00</b></h3>
+            <p>ST-PTZ010I</p>
+          </div>
+        </a>
+    </div>
+    <!-- Product 10 -->
+    <div class="product-section ptz">
+        <a href="#product10-popup">
+          <img src="ahd2.png" alt="Product 10">
+          <div class="product-details">
+            <h3><b>₱5,000.00</b></h3>
+            <p>ST-PTZ011I</p>
+          </div>
+        </a>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+
+<!-- Product 1 Popup -->
+<div id="product1-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="bullet1pop.png" alt="Product 1 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+    </a>
+</div>
+
+<!-- Product 2 Popup -->
+<div id="product2-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="bullet2pop.png" alt="Product 2 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+
+<!-- Product 3 Popup -->
+<div id="product3-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="star1pop.png" alt="Product 3 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+    </a>
+    </a>
+</div>
+    
+    <!-- Product 4 Popup -->
+<div id="product4-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="star2pop.png" alt="Product 4 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+    <!-- Product 5 Popup -->
+<div id="product5-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="fish1pop.png" alt="Product 5 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+    <!-- Product 6 Popup -->
+<div id="product6-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="fish2pop.png" alt="Product 6 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+    <!-- Product 7 Popup -->
+<div id="product7-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="motor1pop.png" alt="Product 7 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+    <!-- Product 8 Popup -->
+<div id="product8-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="motor2pop.png" alt="Product 8 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+
+    <!-- Product 9 Popup -->
+<div id="product9-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="ahd1pop.png" alt="Product 9 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+    <!-- Product 10 Popup -->
+<div id="product10-popup" class="popup">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="ahd2pop.png" alt="Product 10 Popup">
+    <a href="projectorder.html">
+    <a href="projectorder.html">
+  <button class="order-btn">Order Now</button>
+        </a>
+        </a>
+</div>
+    
+<!-- Site Map Footer -->
+<footer>
+  <div class="container">
+    <h4 style="color:black">Business Details</h4>
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>ADDRESS</b></li>
+          <li><a href="https://maps.app.goo.gl/JMP2PsVy5HUdHsCo9" target=”_blank> 3240 Teacher Village Gen T De Leon, Valenzuela City</a></li>  
+            
+      </div>
+      <!-- Column 2 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>PHONE NUMBER</b></li>
+          <li><a href="tel:09277744429"target=”_blank>(+63)9277744429</a></li>
+          <li><a href="tel:09322965434"target=”_blank>(+63)9322965434</a></li>
+        </ul>
+      </div>
+      <!-- Column 3 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>EMAIL US</b></li>
+          <li><a href="mailto:isecuritiestrading@yahoo.com">isecuritiestrading@yahoo.com</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<!-- Bottom Line -->
+<div class="bottom-line">
+  <p>Website by Julia Denina | Thomas Maglalang | John Aquino | Vincent Arellano | Ken Aliling</p>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

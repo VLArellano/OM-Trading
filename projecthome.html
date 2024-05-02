@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OM Trading</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    body {
+      font-family: Calibri, Arial, sans-serif; /* Change font to Calibri */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .navbar {
+      background-color: black;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .navbar-brand img {
+      max-height: 100px; /* Adjust height as needed */
+    }
+    .navbar-nav {
+      margin: 0 auto; /* Centering tabs */
+      display: flex;
+      justify-content: center;
+    }
+    .navbar-nav .nav-link {
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0 10px; /* Space between tabs */
+      font-weight: normal; /* Normal font weight */
+      border-radius: 20px; /* Rounded background */
+      padding: 8px 16px; /* Adjust padding */
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      background-color: #E96A59; /* Change background color */
+      color: white !important; /* Text color white */
+      font-weight: bold; /* Bold font weight */
+    }
+    .photo-header {
+      background-image: url('header.png');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 300px;
+      margin-top: -20px; /* Adjust margin to remove white space */
+    }
+      .header-title {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-title h1,
+.header-title h2 {
+  font-weight: bold;
+}
+      
+    /* Welcome Section Styles */
+.welcome-section {
+  background-color: white;
+  padding: 40px 0;
+}
+
+.welcome-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.welcome-text {
+  max-width: 70%;
+  text-align: justify; /* Justify paragraph text */
+}
+
+.welcome-text h3 {
+  color: #333;
+}
+
+.welcome-text p {
+  opacity: 0.8;
+}
+
+.welcome-video {
+  max-width: 25%; /* Reduce the size of the video */
+  margin-top: -30px; /* Adjust the margin to move it further up */
+}
+      /* Second Welcome Section Styles */
+.welcome-section-black {
+  background-color: black;
+  padding: 40px 0;
+  color: white; /* Set text color to white */
+}
+
+.welcome-section-black .welcome-content {
+  flex-direction: row-reverse; /* Reverse the order of content */
+}
+
+.welcome-section-black .welcome-text h3,
+.welcome-section-black .welcome-text p {
+  opacity: 0.8;
+  color: white; /* Set text color to white */
+}
+
+.welcome-section-black .welcome-image {
+  max-width: 25%; /* Reduce the size of the video */
+  margin-top: -50px; /* Adjust the margin to move it further up */
+}
+.article-box {
+  border: 2px solid white; /* Add a white border */
+  border-radius: 10px; /* Add some border radius for rounded corners */
+  padding: 20px; /* Add some padding to the article box */
+  margin-bottom: 20px; /* Add some bottom margin to separate each article box */
+}
+
+.article-box:hover {
+  border-color: forestgreen; /* Change border color on hover */
+}
+    
+.article-image {
+  max-width: 100%;
+  height: auto;
+}
+      
+.sliding-images-section {
+  height: 620px; /* Adjust the height as needed */
+  overflow: hidden; /* Hide overflow to prevent horizontal scrollbar */
+}
+
+.sliding-images-container {
+  display: flex;
+  animation: slideImages 20s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes slideImages {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.sliding-images-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+      /* Site Map Footer */
+    footer {
+      background-image: url("bgsitemap.jpg");
+      padding: 20px 0;
+      background-size: cover; 
+      background-position: 27% 73%; 
+      margin-top: auto; /* Push footer to bottom */
+    }
+    footer h4 {
+      margin-bottom: 20px;
+      font-weight: bold; /* Bold font weight */
+    }
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    .bottom-line {
+      text-align: right;
+      padding: 3px 20px; /* Adjust padding */
+      background-color:black ; /* Background color */
+    }
+    .bottom-line p {
+      color: gainsboro; /* Text color white */
+      margin: 0; /* Remove default margin */
+   }
+      a {
+    color: black;
+    text-decoration: none;
+    }
+    a:hover {
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="OM Trading Logo">
+    </a>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="projecthome.html">Home</a>
+        </li>
+        <!-- About Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectaboutus.html">About Us</a>
+        </li>
+        <!-- Products -->
+        <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Products
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="projectorder.html">Order Form</a></li>
+        </ul>
+        </li>
+        <!-- Services -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectservice.html">Services</a>
+        </li>
+        <!-- Testimonials -->
+        <li class="nav-item">
+          <a class="nav-link" href="projecttestimonials.html">Testimonials</a>
+        </li>
+        <!-- Support -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectsupport.html">Support</a>
+        </li>
+        <!-- Contact Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectcontactus.html">Contact Us</a>
+        </li>
+        <!-- FAQs -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectfaqs.html">FAQs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Photo Header -->
+<div class="photo-header">
+  <div class="header-title">
+    <h1>Smart AI Driven Surveillance</h1>
+    <h2>Solution For The Modern World</h2>
+  </div>
+</div>
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+  <div class="container">
+    <div class="welcome-content">
+      <div class="welcome-text">
+        <h3><b>Welcome to OM Trading</b></h3>
+        <p>Welcome to OM Trading CCTV and Security System Services, your premier destination for cutting-edge surveillance solutions. At OM Trading, we pride ourselves on delivering top-notch security systems tailored to meet your unique needs. With a commitment to excellence and innovation, our team of experts is dedicated to providing state-of-the-art CCTV and security solutions to safeguard your property, assets, and peace of mind. Whether you're a homeowner looking to enhance your residential security or a business owner in need of comprehensive surveillance measures, OM Trading is your trusted partner. Experience unparalleled protection and reliability with our range of advanced security products and expert installation services. Welcome to a safer tomorrow with OM Trading CCTV and Security System Services.</p>
+      </div>
+      <div class="welcome-video">
+        <video width="300" height="350" autoplay muted loop controls="false">
+  <source src="homevid.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <!-- Second Section -->
+<section class="welcome-section welcome-section-black">
+  <div class="container">
+    <div class="welcome-content">
+      <div class="welcome-text" style="margin-bottom: 40px;"> <!-- Added margin to move it more downward -->
+        <h3 class="white-text" style="margin-bottom: 20px;"><b>Superior Products and Unmatched Services</b></h3> <!-- Added margin to move it more downward -->
+        <p style="opacity: 0.8;">Discover unparalleled security solutions with OM Trading CCTV and Security System Services. We take pride in offering a comprehensive range of cutting-edge products coupled with unmatched expertise to ensure your peace of mind. Our state-of-the-art CCTV systems provide crystal-clear surveillance, enabling you to monitor your property with precision and confidence. From robust alarm systems to advanced access control solutions, we tailor our offerings to meet your unique security needs. Backed by years of industry experience and a commitment to excellence, OM Trading is your trusted partner in safeguarding what matters most. Experience the difference with our superior products and unmatched services – because when it comes to security, compromise is never an option.</p>
+      </div>
+      <div class="welcome-image">
+        <img width="300" height="350" src="home2.png" alt="OM Trading Image">
+      </div>
+    </div>
+  </div>
+</section>
+   
+    <!--Sliding Images -->
+<section class="sliding-images-section" style="background-color: whitesmoke;">
+  <div class="container">
+    <div class="sliding-images-container">
+      <img src="slide1.png" alt="Slide 1">
+      <img src="slide2.png" alt="Slide 2">
+      <img src="slide3.png" alt="Slide 3">
+      <img src="slide4.png" alt="Slide 4">
+      <img src="slide5.png" alt="Slide 5">
+    </div>
+  </div>
+</section>
+    
+<!-- Third Section -->
+<section class="welcome-section" style="background-color: #0C235D;">
+  <div class="container">
+    <h3 style="color: white; text-align: center; margin-bottom: 40px;"><b>Our Certificates</b></h3>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="cert1.jpeg" alt="Certificate 1" style="width: 100%;">
+      </div>
+      <div class="col-md-4">
+        <img src="cert2.jpeg" alt="Certificate 2" style="width: 100%;">
+      </div>
+      <div class="col-md-4">
+        <img src="cert3.jpeg" alt="Certificate 3" style="width: 100%;">
+      </div>
+    </div>
+  </div>
+</section>
+    
+<!-- Fourth Section -->
+<section class="welcome-section" style="background-color: black;">
+  <div class="container">
+    <h3 style="color: white; text-align: center; margin-bottom: 40px;"><b>Featured Articles</b></h3>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="https://www.cctvtech.com.sg/news-detail/pb789" target="_blank" style="color: white; text-decoration: none;">
+          <div class="article-box">
+            <img src="article1.png" alt="PB789 Image" class="article-image">
+            <div class="article-info">
+                <br />
+              <h4 class="article-title"><b>PB789</b></h4>
+              <p class="article-description">Discover the latest features of our PB789 product.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="https://www.cctvtech.com.sg/news-detail/long-range" target="_blank" style="color: white; text-decoration: none;">
+          <div class="article-box">
+            <img src="article2.png" alt="Long Range Image" class="article-image">
+            <div class="article-info">
+                <br />
+              <h4 class="article-title"><b>Long Range</b></h4>
+              <p class="article-description">Learn about the capabilities of our long-range surveillance system.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="https://www.cctvtech.com.sg/news-detail/pbxs-360" target="_blank" style="color: white; text-decoration: none;">
+          <div class="article-box">
+            <img src="article3.png" alt="PBXS-360 Image" class="article-image">
+            <div class="article-info">
+                <br />
+              <h4 class="article-title"><b>PBXS-360</b></h4>
+              <p class="article-description">Explore the 360-degree view capabilities of our PBXS-360 system.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Site Map Footer -->
+<footer>
+  <div class="container">
+    <h4 style="color:black">Business Details</h4>
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>ADDRESS</b></li>
+          <li><a href="https://maps.app.goo.gl/JMP2PsVy5HUdHsCo9" target=”_blank> 3240 Teacher Village Gen T De Leon, Valenzuela City</a></li>  
+            
+      </div>
+      <!-- Column 2 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>PHONE NUMBER</b></li>
+          <li><a href="tel:09277744429"target=”_blank>(+63)9277744429</a></li>
+          <li><a href="tel:09322965434"target=”_blank>(+63)9322965434</a></li>
+        </ul>
+      </div>
+      <!-- Column 3 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>EMAIL US</b></li>
+          <li><a href="mailto:isecuritiestrading@yahoo.com">isecuritiestrading@yahoo.com</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bottom Line -->
+<div class="bottom-line">
+  <p>Website by Julia Denina | Thomas Maglalang | John Aquino | Vincent Arellano | Ken Aliling</p>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

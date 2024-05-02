@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - OM Trading</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    body {
+      font-family: Calibri, Arial, sans-serif; /* Change font to Calibri */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: white;
+      font-size: 120%;
+    }
+    .navbar {
+      background-color: black;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .navbar-brand img {
+      max-height: 100px; /* Adjust height as needed */
+    }
+    .navbar-nav {
+      margin: 0 auto; /* Centering tabs */
+      display: flex;
+      justify-content: center;
+    }
+    .navbar-nav .nav-link {
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0 10px; /* Space between tabs */
+      font-weight: normal; /* Normal font weight */
+      border-radius: 20px; /* Rounded background */
+      padding: 8px 16px; /* Adjust padding */
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      background-color: #E96A59; /* Change background color */
+      color: white !important; /* Text color white */
+      font-weight: bold; /* Bold font weight */
+    }
+    .photo-header {
+      background-image: url('pic2.png');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 600px;
+      margin-top: -20px; /* Adjust margin to remove white space */
+    }
+    /* Site Map Footer */
+    footer {
+      background-image: url("bgsitemap.jpg");
+      padding: 20px 0;
+      background-size: cover; 
+      background-position: 27% 73%; 
+      margin-top: auto; /* Push footer to bottom */
+    }
+    footer h4 {
+      margin-bottom: 20px;
+      font-weight: bold; /* Bold font weight */
+    }
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer ul li {
+      margin-bottom: 10px;
+    }
+    .bottom-line {
+      text-align: right;
+      padding: 3px 20px; /* Adjust padding */
+      background-color:black ; /* Background color */
+    }
+    .bottom-line p {
+      color: gainsboro; /* Text color white */
+      margin: 0; /* Remove default margin */
+    }
+    
+    ul.a{
+      list-style-type: circle;
+      color: #ffffff;
+      text-align: left;
+      font-size: 100%;
+    }
+    table, th, td {
+      border: 2px solid;
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: space-evenly;
+      
+    }
+    .container1 {
+      width: 100%;
+      height: 800px;
+      margin: 0 auto;
+      border: 10px solid var(--clr-dark);
+    }
+    .item {
+      width: 400px;
+      height: 520px;
+      background-color:  #14171fed;
+      padding: 1em;
+      font-weight: 700;
+      color: var(--clr-light);
+      text-align: center;
+      border: 10px solid var(--clr-accent);
+      border-radius: 15px;
+      border: 2px solid #fafafa;
+    }
+    .item-3{
+      flex-grow: 1;
+    }
+    img {
+      height: auto;
+      width: 100%;
+    }
+    p {
+      color: white;
+      font-size: 15px;
+    }
+    a {
+    color: black;
+    text-decoration: none;
+    }
+    a:hover {
+    color:#00A0C6; 
+    text-decoration:none; 
+    cursor:pointer;  
+    }
+</style>
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="OM Trading Logo">
+    </a>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="projecthome.html">Home</a>
+        </li>
+        <!-- About Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectaboutus.html">About Us</a>
+        </li>
+        <!-- Products -->
+<li class="nav-item dropdown active">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Products
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a class="dropdown-item" href="projectorder.html">Order Form</a></li>
+  </ul>
+</li>
+        <!-- Services -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="projectservice.html">Services</a>
+        </li>
+        <!-- Testimonials -->
+        <li class="nav-item">
+          <a class="nav-link" href="projecttestimonials.html">Testimonials</a>
+        </li>
+        <!-- Support -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectgallery.html">Gallery</a>
+        </li>
+        <!-- Contact Us -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectcontactus.html">Contact Us</a>
+        </li>
+        <!-- FAQs -->
+        <li class="nav-item">
+          <a class="nav-link" href="projectfaqs.html">FAQs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Photo Header -->
+<section>
+  <div class="photo-header">
+    <br />
+      <br />
+      <div class="container1">
+        <div class="item item-1">
+          <b>Services</b> 
+          <br />
+          <ul class ="a">
+            <li>
+              Consultation and System Design
+            </li>
+          </ul>  
+
+        <ul class ="a">
+          <li>
+            System Maintenance and Repair
+          </li>
+        </ul>
+
+        <ul class ="a">
+          <li>Monitoring
+          </li>
+        </ul>
+
+        <ul class ="a">
+          <li>Cloud Storage
+          </li>
+        </ul>
+
+        <ul class ="a">
+          <li>Remote Access
+          </li>
+        </ul>
+
+        <ul class ="a">
+          <li>Integration with Other Security Systems
+          </li>
+        </ul>
+        <p>
+        Our team of security specialists will consult with 
+        you to understand your specific needs and design a customized CCTV 
+        system for your home or business. We offer a wide range of high-quality 
+        cameras to suit any environment, ensuring clear and reliable footage. 
+        Our technicians will then expertly install your system, ensuring optimal 
+        placement and functionality.
+        </p>
+    </div>
+
+    <div class="item item-3">
+      <table>
+        <tr>
+          <th>Types </th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Consultation and System Design</td>
+          <td>A security professional will assess your property and needs to recommend the right CCTV system for you. This includes the type of cameras, number of cameras, placement of cameras, and storage options.</td>
+        </tr>
+        <tr>
+          <td>CCTV Installation</td>
+          <td>A qualified technician will install your CCTV system according to the designed plan. This includes mounting the cameras, running cables, and connecting the system to a monitor or recording device.</td>
+        </tr>
+        <tr>
+          <td>System Maintenance and Repair</td>
+          <td>CCTV systems require regular maintenance to ensure they are functioning properly. A CCTV business can provide preventative maintenance plans as well as repair services for damaged systems.</td>
+        </tr>
+        <tr>
+          <td>Monitoring</td>
+          <td>Some CCTV businesses offer 24/7 monitoring services. This means that a team of security professionals will monitor your CCTV footage for signs of suspicious activity and alert you or the authorities if necessary.</td>
+        </tr>
+        <tr>
+          <td>Cloud Storage</td>
+          <td>Cloud storage allows you to store your CCTV footage online. This is a convenient and secure way to back up your footage and access it from anywhere.</td>
+        </tr>
+        <tr>
+          <td>Remote Access</td>
+          <td>With remote access, you can view your CCTV footage from your smartphone, tablet, or computer. This allows you to keep an eye on your property even when you are away.</td>
+        </tr>
+        <tr>
+          <td>Integration with Other Security Systems</td>
+          <td>CCTV systems can be integrated with other security systems, such as alarms and access control systems. This can create a more comprehensive security solution for your property.</td>
+        </tr>
+      </table>
+    </div>
+
+</section>
+
+<!-- Site Map Footer -->
+<footer>
+  <div class="container">
+    <h4 style="color:black">Business Details</h4>
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>ADDRESS</b></li>
+          <li><a href="https://maps.app.goo.gl/JMP2PsVy5HUdHsCo9" target=”_blank> 3240 Teacher Village Gen T De Leon, Valenzuela City</a></li>
+        </ul>
+      </div>
+      <!-- Column 2 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>PHONE NUMBER</b></li>
+          <li><a href="tel:09277744429"target=”_blank>(+63)9277744429</a></li>
+          <li><a href="tel:09322965434"target=”_blank>(+63)9322965434</a></li>
+        </ul>
+      </div>
+      <!-- Column 3 -->
+      <div class="col">
+        <ul>
+          <li style="color:black"><b>EMAIL US</b></li>
+          <li><a href="mailto:isecuritiestrading@yahoo.com">isecuritiestrading@yahoo.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bottom Line -->
+<br />
+<div class="bottom-line">
+  <p>Website by Julia Denina | Thomas Maglalang | John Aquino | Vincent Arellano | Ken Aliling</p>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
